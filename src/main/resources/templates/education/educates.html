@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      dir="ltr"
+      th:attr="lang=${#locale.language}, dir=${#locale.language == 'fa' ? 'rtl' : 'ltr'}">
+<head >
+  <title th:text="#{educate.educates.title}"></title>
+  <th:block th:replace="~{education/fragments/head-tag :: head-tag}"></th:block>
+</head>
+<body data-bs-theme="light">
+<!-- نوار بالایی -->
+<div th:replace="~{education/fragments/header :: header}"></div>
+
+<!-- سایدبار -->
+<div th:replace="~{education/fragments/educate-sidebar :: sidebar}"></div>
+
+<!-- محتوای اصلی -->
+<main class="main-content">
+  <div class="container-fluid p-2">
+    <!-- در بخشی از صفحه که همیشه وجود دارد -->
+    <div id="deleteConfirmText" style="display: none;" th:text="#{educate.educates.delete.confirm}"></div>
+    <!-- فرگمنت جدول مشتریان -->
+    <div id="educates-table-container">
+      <div th:replace="~{education/fragments/educates-table :: educates-table}"></div>
+    </div>
+  </div>
+</main>
+
+<!-- فوتر -->
+<div th:replace="~{education/fragments/footer :: footer}"></div>
+
+<!-- مودال افزودن/ویرایش مشتری -->
+<div th:replace="~{education/fragments/educates-modal :: educate-modal}"></div>
+
+<!-- اسکریپت‌ها -->
+<th:block th:replace="~{education/fragments/scripts :: scripts}"></th:block>
+<script th:src="@{/js/education.js}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<div th:fragment="educate-modal">
+    <div class="modal fade" id="educateModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:text="#{educate.educates.modal.title}"></h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="educateForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="educateId">
+
+                        <div class="mb-3">
+                            <label th:text="#{educate.educates.firstName}"></label>
+                            <input type="text" class="form-control" id="firstName" required>
+
+                        </div>
+                        <div class="mb-3">
+                            <label th:text="#{educate.educates.lastName}"></label>
+                            <input type="text" class="form-control" id="lastName" required>
+
+                        </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span th:text="#{educate.educates.cancel}"></span>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span th:text="#{educate.educates.save}"></span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

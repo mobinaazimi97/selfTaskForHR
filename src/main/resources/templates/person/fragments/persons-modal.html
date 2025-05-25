@@ -1,0 +1,53 @@
+<div th:fragment="person-modal">
+  <div class="modal fade" id="personModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" th:text="#{persons.modal.title}"></h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="personForm">
+          <div class="modal-body">
+            <input type="hidden" id="personId">
+
+            <div class="mb-3">
+              <label th:text="#{persons.firstName}"></label>
+              <input type="text" class="form-control" id="firstName" required>
+            </div>
+
+            <div class="mb-3">
+              <label th:text="#{persons.lastName}"></label>
+              <input type="text" class="form-control" id="lastName" required>
+            </div>
+
+            <div class="mb-3">
+              <label th:text="#{persons.user}"></label>
+              <input type="text" class="form-control" id="username" required>
+            </div>
+<!--            <div class="mb-3">-->
+<!--              <label th:text="#{persons.email}"></label>-->
+<!--              <input type="text" class="form-control" id="email" required>-->
+<!--            </div>-->
+
+<!--            <div class="mb-3">-->
+<!--              <label th:text="#{persons.phone}"></label>-->
+<!--              <input type="text" class="form-control" id="phone" required>-->
+<!--            </div>-->
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <span th:text="#{persons.cancel}"></span>
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <span th:text="#{persons.save}"></span>
+              </button>
+            </div>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

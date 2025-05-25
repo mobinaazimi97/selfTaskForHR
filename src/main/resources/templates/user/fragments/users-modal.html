@@ -1,0 +1,46 @@
+<div th:fragment="user-modal">
+    <div class="modal fade" id="userModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:text="#{user.users.modal.title}"></h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="userForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="userId">
+                        <div class="mb-3">
+                            <label th:text="#{user.username}"></label>
+                            <input type="text" class="form-control" id="username" required>
+<!--                            <span class="val-err" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>-->
+                        </div>
+                        <div class="mb-3">
+                            <label th:text="#{user.password}"></label>
+                            <input type="text" class="form-control" id="password" required>
+<!--                            <span class="val-err" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>-->
+                        </div>
+
+                        <div class="mb-3">
+                            <label th:text="#{user.roleSet}"></label>
+                            <input type="text" class="form-control" id="roleName" required>
+                            <!--                            <span class="val-err" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>-->
+
+                        <div class="mb-3">
+                            <label th:text="#{user.locked}"></label>
+                            <input type="text" class="form-control" id="locked" required>
+<!--                            <span class="val-err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span th:text="#{user.users.cancel}"></span>
+                        </button>
+                        <button type="submit" id="submitButton" class="btn btn-primary">
+                            <span th:text="#{user.users.save}"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

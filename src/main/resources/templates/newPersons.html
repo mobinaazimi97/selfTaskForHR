@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div>
+    <span class="val-err" th:if="${#fields.hasErrors()}" th:each="err : ${#fields.allErrors()}" ></span>
+
+</div>
+
+<form id="personForm" th:object="${person}" th:action="@{/newPersons}" th:method="POST">
+    <div class="modal-body">
+        <input type="hidden" id="personId">
+        <div class="mb-3">
+            <label th:text="${person.firstName}"></label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName">
+            <span class="val-err" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+        </div>
+        <div class="mb-3">
+            <label th:text="${person.lastName}"></label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName">
+            <span class="val-err" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </div>
+        <div class="mb-3">
+            <label th:text="${person.email}"></label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="email">
+            <span class="val-err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div class="mb-3">
+            <label th:text="${person.user}"></label>
+            <input type="tel" class="form-control" id="user" name="user" placeholder="user">
+            <span class="val-err" th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" id="savePerson" value="save">
+    </button>
+
+    <!--    <button type="submit" class="btn btn-primary" id="getCustomerId">-->
+    <!--        <span th:text="#{customers.get}"></span>-->
+    <!--    </button>-->
+
+</form>
+<h1 th:if="${#lists.isEmpty(persons)}">No Content!</h1>
+
+<table th:if="${not #lists.isEmpty(persons)}">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>email</th>
+        <th>user</th>
+        <th>Operation</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person:${persons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.firstName}"></td>
+        <td th:text="${person.lastName}"></td>
+        <td th:text="${person.email}"></td>
+        <td th:text="${person.user}"></td>
+        <td>
+            <button>Edit</button>
+<!--            <button>Remove</button>-->
+            <button class="btn btn-danger" th:onclick="deletePersonById([[${person.id}]])">Delete <i
+                    class="fa fa-remove"></i></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<th:block th:replace="~{fragments/scripts :: scripts}"></th:block>-->
+<button onclick="fetchData()">Click</button>
+
+
+<script th:src="@{js/personFetchScript.js}"></script>
+
+<script>
+
+
+    // document.getElementById("saveCustomer").addEventListener("submit", function(event) {
+    //     event.preventDefault();
+    // }
+
+    // function changeName(){
+    //     const nameField = document.getElementById('firstName');
+    //     nameField.value = "changed";
+    //     nameField.classList.add ("is-valid");
+    //     nameField.focus();
+    //     nameField.style.color = "green";
+    // }
+</script>
+</body>
+</html>
